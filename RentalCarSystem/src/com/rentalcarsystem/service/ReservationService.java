@@ -5,7 +5,8 @@ import java.util.List;
 import com.rentalcarsystem.domain.Reservation;
 
 public interface ReservationService {
-public boolean save(Reservation reservation);
+
+	public boolean save(Reservation reservation);
 	
 	public List<Reservation> getAll();
 	
@@ -13,5 +14,4 @@ public boolean save(Reservation reservation);
 	
 	public boolean delete(Reservation reservation);
 	
-	public Reservation edit(Reservation reservation);
 }
