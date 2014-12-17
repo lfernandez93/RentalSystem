@@ -15,7 +15,7 @@ public class ReservationServiceImpl {
 	@Autowired
 	ReservationRepository reservationRepository;
 	
-	public boolean save(Reservation reservation ){
+	public boolean addReservation(Reservation reservation ){
 		try {
 			reservationRepository.save(reservation);
 		} catch(Exception e) {
@@ -39,6 +39,10 @@ public class ReservationServiceImpl {
 	
 	public Reservation findById(Integer id) {
 		return reservationRepository.getReservationById(id);
+	}
+	
+	public void update(Reservation reservation) {
+		reservationRepository.save(reservation);
 	}
 
 }
