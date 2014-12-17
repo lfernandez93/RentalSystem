@@ -15,4 +15,6 @@ public interface CustomerService {
 	public boolean delete(Customer customer);
 	
 	public Customer edit(Customer customer);
+	
+	public Customer findByDriverLicense(String driverLicenseNumber); 
 }

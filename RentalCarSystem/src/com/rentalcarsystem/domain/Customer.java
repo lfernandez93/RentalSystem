@@ -15,6 +15,9 @@ import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
@@ -25,12 +28,15 @@ public class Customer{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
 	@Column(name = "DriverLicenseNo")
-	private String DriverLicenceNumber;
+	@Size(min=10,max=10,message="{Size.customer.licensenumber.validation}")
+	@Pattern(regexp="\\d*",message = "{Pattern.customer.licensenumber.validation}")
+	private String driverLicenseNumber;
 	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY, mappedBy="customer")
 	@MapKey(name = "reservationId")
 	private Map<Integer,Reservation> reservations = new HashMap<Integer, Reservation>();
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)
 	@JoinColumn(name = "personId")
+	@Valid
 	private Person person;
 	
 	public Person getPerson() {
@@ -51,11 +57,11 @@ public class Customer{
 	public void setCustomerId(int customerId) {
 		this.customerId = customerId;
 	}
-	public String getDriverLicenceNumber() {
-		return DriverLicenceNumber;
+	public String getDriverLicenseNumber() {
+		return driverLicenseNumber;
 	}
-	public void setDriverLicenceNumber(String driverLicenceNumber) {
-		DriverLicenceNumber = driverLicenceNumber;
+	public void setDriverLicenseNumber(String driverLicenseNumber) {
+		this.driverLicenseNumber = driverLicenseNumber;
 	}
 
 }

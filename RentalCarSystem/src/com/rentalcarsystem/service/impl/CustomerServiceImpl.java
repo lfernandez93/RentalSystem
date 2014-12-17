@@ -30,7 +30,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public List<Customer> getAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return customerRepo.getAllCustomers();
 	}
 
 	@Override
@@ -54,6 +54,12 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer edit(Customer customer) {
 		// TODO Auto-generated method stub
 		return customerRepo.save(customer);
+	}
+
+	@Override
+	public Customer findByDriverLicense(String driverLicenseNumber) {
+		// TODO Auto-generated method stub
+		return customerRepo.getCustomerByDriverLicenseNumber(driverLicenseNumber);
 	}
 	
 }
