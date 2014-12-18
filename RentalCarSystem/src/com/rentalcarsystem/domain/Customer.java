@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 @Entity(name = "Customer")
@@ -31,10 +32,10 @@ public class Customer{
 	@Size(min=10,max=10,message="{Size.customer.licensenumber.validation}")
 	@Pattern(regexp="\\d*",message = "{Pattern.customer.licensenumber.validation}")
 	private String driverLicenseNumber;
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@MapKey(name = "reservationId")
 	private Map<Integer,Reservation> reservations = new HashMap<Integer, Reservation>();
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	@JoinColumn(name = "personId")
 	@Valid
 	private Person person;
@@ -45,6 +46,8 @@ public class Customer{
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+	
+	@JsonIgnore
 	public Map<Integer, Reservation> getReservations() {
 		return reservations;
 	}

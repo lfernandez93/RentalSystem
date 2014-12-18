@@ -17,9 +17,9 @@ public class ReservationController {
 	
 	//Add new Reservation
 	@RequestMapping(value = "/addreservation", method = RequestMethod.GET)
-	public String getAddNewReservationForm(Model model) {
-		Reservation newReservation = new Reservation();
-		model.addAttribute("newReservation", newReservation);
+	public String getAddNewReservationForm() {
+		//Reservation newReservation = new Reservation();
+		//model.addAttribute("newReservation", newReservation);
 		return "addreservation";
 	}
 	

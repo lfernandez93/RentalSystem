@@ -31,9 +31,12 @@ function searchCustomer(){
 }
 
 function displayCustomer(customer){
-	$("customerId").val(customer.customerid);
-	$("firstName").val(customer.person.firstname);
-	$("lastName").val(customer.person.lastname);
+	$("#customerId").val(customer.customerId);
+	$("#firstName").val(customer.person.firstName);
+	$("#lastName").val(customer.person.lastName);
+	$("#address").val(customer.person.address);
+	$("#phoneNumber").val(customer.person.phoneNumber);
+	$("#nationality").val(customer.person.nationality);
 }
 
 function saveCustomer(){

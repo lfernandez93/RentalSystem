@@ -26,7 +26,7 @@
 			</div>
 			<div>
 			<div id="errorRest"></div>
-		<span hidden id="idCustomer"></span>
+		<span hidden id="customerId"></span>
 			<label for="DriverLicenseNumber"><spring:message code="addCustomer.form.DriverLicenseNumber.label"/></label>
 			<form:input  onkeyup="searchCustomer()" id="driverLicenseNumber" path="driverLicenseNumber" type="text"/>
 			<form:errors path="driverLicenseNumber"/> 
