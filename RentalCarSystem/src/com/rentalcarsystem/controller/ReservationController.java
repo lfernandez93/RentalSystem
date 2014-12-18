@@ -3,6 +3,7 @@ package com.rentalcarsystem.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,17 +11,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rentalcarsystem.domain.Reservation;
 import com.rentalcarsystem.service.ReservationService;
-
+@Controller()
 public class ReservationController {
 	@Autowired
 	ReservationService reservationService;
 	
 	//Add new Reservation
 	@RequestMapping(value = "/addreservation", method = RequestMethod.GET)
-	public String getAddNewReservationForm() {
-		//Reservation newReservation = new Reservation();
-		//model.addAttribute("newReservation", newReservation);
-		return "addreservation";
+	public String getAddNewReservationForm(Model model) {
+		Reservation newReservation = new Reservation();
+		model.addAttribute("newReservation", newReservation);
+		return "addReservation";
 	}
 	
 	@RequestMapping(value = "/addreservation", method = RequestMethod.POST)
@@ -85,5 +86,6 @@ public class ReservationController {
 		model.addAttribute("reservations", reservations);
 		return "reservations";
 	}
+	
 	
 }

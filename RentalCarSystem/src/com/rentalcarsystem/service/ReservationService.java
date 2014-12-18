@@ -14,6 +14,6 @@ public interface ReservationService {
 	
 	public boolean delete(Reservation reservation);
 	
-	public boolean update(Reservation reservation);
+	public void update(Reservation reservation);
 	
 }
