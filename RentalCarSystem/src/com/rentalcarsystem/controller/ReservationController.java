@@ -84,7 +84,7 @@ public class ReservationController {
 	}
 	
 	//View all reservation
-	@RequestMapping(value = "/reservations", method = RequestMethod.POST)
+	@RequestMapping(value = "/reservations", method = RequestMethod.GET)
 	public String viewReservation(Model model){
 		List<Reservation> reservations = reservationService.getAll();
 		model.addAttribute("reservations", reservations);
