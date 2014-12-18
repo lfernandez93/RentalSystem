@@ -10,6 +10,8 @@ import com.rentalcarsystem.domain.Customer;
 @Repository
 public interface CustomerRepository extends CrudRepository<Customer, Integer>{
 	
-	//@Query("SELECT c FROM CUSTOMER c")
-	//public List<Customer> getAllCustomers();
+	@Query("SELECT c FROM Customer c")
+	public List<Customer> getAllCustomers();
+	
+	public Customer getCustomerByDriverLicenseNumber(String driverLicenseNumber);
 }
