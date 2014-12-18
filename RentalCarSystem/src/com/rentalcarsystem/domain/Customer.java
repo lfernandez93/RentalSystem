@@ -21,8 +21,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
-@Entity
-@Table
+@Entity(name = "Customer")
+@Table()
 public class Customer{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,10 +31,10 @@ public class Customer{
 	@Size(min=10,max=10,message="{Size.customer.licensenumber.validation}")
 	@Pattern(regexp="\\d*",message = "{Pattern.customer.licensenumber.validation}")
 	private String driverLicenseNumber;
-	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY, mappedBy="customer")
+	@OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
 	@MapKey(name = "reservationId")
 	private Map<Integer,Reservation> reservations = new HashMap<Integer, Reservation>();
-	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER)
 	@JoinColumn(name = "personId")
 	@Valid
 	private Person person;

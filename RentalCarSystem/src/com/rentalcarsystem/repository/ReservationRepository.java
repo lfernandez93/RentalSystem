@@ -11,10 +11,10 @@ import com.rentalcarsystem.domain.Reservation;
 
 @Repository
 public interface ReservationRepository extends CrudRepository<Reservation, Integer>{
-	@Query("SELECT re FROM RESERVATION re")
+	@Query("SELECT re FROM Reservation re")
 	public List<Reservation> getAllReservations();
 	
-	@Query("SELECT re FROM RESERVATION re where re.reservationId = :id")
+	@Query("SELECT re FROM Reservation re where re.reservationId = :id")
 	public Reservation getReservationById(@Param("id")int id);
 	
 }

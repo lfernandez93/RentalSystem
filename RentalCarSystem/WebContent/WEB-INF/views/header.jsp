@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 
 <div>
 <table border="0">
@@ -19,16 +20,16 @@
 </td>
 <td>
 <div id="footer">
-<c:set var="logedin" value="false"/>
   <ul class="bottom">
-  <c:if test="${logedin}">
-  <li>Login /
-  <li><a href="/WEB-INF/views/logout.jsp">Logout</a>
-  </c:if>
-  <c:if test="${!logedin}">
-  <li><a href="/WEB-INF/views/login.jsp">Login</a> |
-  <li>Logout
-  </c:if> 
+  
+ 
+
+ <security:authorize access="isAuthenticated()">
+  <li><a href="<spring:url value='/doLogout' />">Logout</a>
+  </security:authorize>
+   <security:authorize access="isAnonymous()">
+  <li><a href="<spring:url value='/login/' />"> Login</a></li> 
+   </security:authorize>
   </ul>
 </div>
 </td>

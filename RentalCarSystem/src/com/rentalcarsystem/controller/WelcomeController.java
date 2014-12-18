@@ -12,7 +12,7 @@ public class WelcomeController {
 	
 	@Autowired
 	CustomerService customServ;
-	@RequestMapping("/")
+	@RequestMapping({"/","/welcome"})
 	public String getWelcomePage(){
 		return "welcome";
 		

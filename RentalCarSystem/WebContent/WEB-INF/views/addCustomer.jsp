@@ -15,6 +15,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
+				
 	<form:form class="semantic"	modelAttribute="newCustomer">
 		<fieldset>
 			<legend>
@@ -24,9 +25,11 @@
 			<form:errors path="*"/>
 			</div>
 			<div>
+			<div id="errorRest"></div>
+		<span hidden id="idCustomer"></span>
 			<label for="DriverLicenseNumber"><spring:message code="addCustomer.form.DriverLicenseNumber.label"/></label>
-			<form:input id="driverLicenseNumber" path="driverLicenseNumber" type="text"/>
-			<form:errors path="driverLicenseNumber"/>
+			<form:input  onkeyup="searchCustomer()" id="driverLicenseNumber" path="driverLicenseNumber" type="text"/>
+			<form:errors path="driverLicenseNumber"/> 
 			</div>			
 			<div>
 			<label for="firstName"><spring:message code="addCustomer.form.firstName.label"/></label>
@@ -54,8 +57,8 @@
 			<form:errors path="person.nationality"/>
 			</div>
 			<br>
-			<input type="submit" value="<spring:message code="addCustomer.form.button.submit"/>">
 		</fieldset>
+		<input type="submit" value="<spring:message code="addCustomer.form.button.submit"/>">
 	</form:form>	
 <jsp:include page="/WEB-INF/views/footer.jsp"/>
 </body>

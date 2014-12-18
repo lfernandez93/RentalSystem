@@ -5,6 +5,7 @@ import java.util.List;
 import com.rentalcarsystem.service.CustomerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ public class CustomerServiceImpl implements CustomerService{
 	@Autowired
 	CustomerRepository customerRepo;
 	@Override
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
 	public boolean save(Customer customer) {
 		// TODO Auto-generated method stub
 		try {
@@ -36,7 +38,8 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer findById(Integer id) {
 		// TODO Auto-generated method stub
-		return customerRepo.findOne(id);
+		Customer customer = customerRepo.findOne(id);
+		return customer;
 	}
 
 	@Override

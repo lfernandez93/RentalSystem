@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -22,7 +23,6 @@ public class CustomerController {
 	
 	@Autowired
 	CustomerService customerService;
-	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String showAddCustomer(@ModelAttribute(value = "newCustomer") Customer customer){
 		return "addCustomer";
@@ -33,6 +33,7 @@ public class CustomerController {
 		if(result.hasErrors()){
 			return "addCustomer";
 		}
+		
 		return "";
 	}
 	
