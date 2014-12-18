@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -13,6 +14,7 @@
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<h1>Add New Vehicle</h1>
 <form:form class="semantic" modelAttribute="newVehicle" enctype="multipart/form-data">
+<form:errors path="*" cssClass="errorblock" element="div"/>
 	<fieldset>
 		<legend>
 			Add a new Vehicle!
@@ -21,38 +23,67 @@
 		<div>
 			<label for="brand"><spring:message code="addVehicle.form.brand.label"/></label>
 			<form:input id="brand" path="brand" type="text"/>
-<%-- 			<form:errors path="brand" cssClass="text-danger"/> --%>
+			<form:errors path="brand" cssClass="error"/>
 		</div>
 		<div>
 			<label for="type"><spring:message code="addVehicle.form.type.label"/></label>
-			<input id="type" path="type" type="text"/>
-<%-- 			<form:errors path="type" cssClass="text-danger"/> --%>
-		</div>
+			<form:select id="type" path="type">
+			<form:option value="NONE" label="--- Select ---"/>
+			<form:option value="sedan" label="Sedan"/>
+			<form:option value="wagon" label="Wagon"/>
+			<form:option value="crossover" label="Crossover"/>
+			<form:option value="luxury" label="Luxury"/>
+			<form:option value="coupe" label="Coupe"/>
+			<form:option value="hatchback" label="Hatchback"/>
+			<form:option value="suv" label="SUV"/>
+			<form:option value="hybrid" label="Hybrid"/>
+			<form:option value="convertible" label="Convertible"/>
+			<form:option value="pickup" label="Pickyp"/>
+			<form:option value="van" label="Van"/>
+			<form:option value="minivan" label="Minivan"/>
+			<form:option value="electonic" label="Electronic"/>
+			</form:select>
+			<form:errors path="type" cssClass="error"/>
+        </div>
 		<div>
 			<label for="model"><spring:message code="addVehicle.form.model.label"/></label>
-			<input id="model" path="model" type="text"/>
-<%-- 			<form:errors path="model" cssClass="text-danger"/> --%>
+			<form:input id="model" path="model" type="text"/>
+			<form:errors path="model" cssClass="error"/>
 		</div>
 		<div>
 			<label for="plateNumber"><spring:message code="addVehicle.form.plateNumber.label"/></label>
-			<input id="plateNumber" path="plateNumber" type="text"/>
-<%-- 			<form:errors path="plateNumber" cssClass="text-danger"/> --%>
+			<form:input id="plateNumber" path="plateNumber" type="text"/>
+			<form:errors path="plateNumber" cssClass="error"/>
 		</div>
-
 		<div>
-			<label for="description">Description</label>
-			<textarea name="description" id="description" rows="2" cols="60"></textarea>
+			<label for="dailyPrice"><spring:message code="addVehicle.form.dailyPrice.label"/></label>
+			<form:input id="dailyPrice" path="dailyPrice" type="text"/>
+			<form:errors path="dailyPrice" cssClass="error"/>
 		</div>
-
 		<div>
-			<label for="price">Price $</label> 
-			<input name="price" id="price" class="money" />
-		</div>
-
+			<label for="year"><spring:message code="addVehicle.form.year.label"/></label>
+			<form:input id="year" path="year" type="text"/>
+			<form:errors path="year" cssClass="error"/>
+		</div>		
 		<div>
-			<label for="pickupDate">Pickup Date</label> <input name="pickupDate"
-				id="pickupDate" class="date" value="" /> <label	class="after">(MM/DD/YYYY)</label>
+			<label for="fuelType"><spring:message code="addVehicle.form.fuelType.label"/></label>
+			<form:input id="fuelType" path="fuelType" type="text"/>
+			<form:errors path="fuelType" cssClass="error"/>
 		</div>
+		<div>
+			<label for="seatQuantity"><spring:message code="addVehicle.form.seatQuantity.label"/></label>
+			<form:input id="seatQuantity" path="seatQuantity" type="text"/>
+			<form:errors path="seatQuantity" cssClass="error"/>
+		</div>						
+		<div>
+			<label for="condition"><spring:message code="addVehicle.form.condition.label"/></label>
+			<textarea name="condition" id="condition" rows="3" cols="60"></textarea>
+		</div>
+  	    <div>
+			<label for="vehicleImage"><spring:message code="addVehicle.form.vehicleImage.label"/></label>
+			<form:input id="vehicleImage" path="vehicleImage" type="file" />
+		</div>
+		
 	</fieldset>
 
 	<div class="button-row">

@@ -6,8 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
@@ -16,15 +21,28 @@ public class Vehicle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int vehicleId;
+	
+	@NotEmpty(message= "{NotEmpty.vehicle.brand.validation}")
 	private String brand;
 	private String type;
 	private String model;
-	private String year;
+	
+	@NotEmpty(message= "{NotEmpty.vehicle.year.validation}")
+	@Pattern(regexp="[0-9]{4}",message = "{Pattern.vehicle.year.validation}")
+	private String year = null;
+		
+	@Pattern(regexp="^[A-Z]{2}-[0-9]{3}$", message="{Pattern.vehicle.plateNumber.validation}")
+	@NotEmpty(message= "{NotEmpty.vehicle.plateNumber.validation}")
 	private String plateNumber;
+	
+	@Min(value=0, message="Min.vehicle.dailyPrice.validation}")
+	@Digits(integer=8, fraction=2, message="{Digits.vehicle.dailyPrice.validation}")
+	@NotNull(message= "{NotNull.vehicle.dailyPrice.validation}")
 	private double dailyPrice;
 	private String fuelType;
 	private String seatQuantity;
 	private String condition;
+	
 	@JsonIgnore
 	@Transient
 	private MultipartFile vehicleImage;

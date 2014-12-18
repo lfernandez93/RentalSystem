@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,5 +61,11 @@ public class CustomerController {
 	@RequestMapping(value = "/all" , method = RequestMethod.GET)
 	public @ResponseBody List<Customer> listCustomers(){
 		return customerService.getAll();
+	}
+	
+	@RequestMapping(value = "/list" , method = RequestMethod.GET)
+	public String listCustomer(Model model){
+		model.addAttribute("customers", customerService.getAll());
+		return "customers";
 	}
 }

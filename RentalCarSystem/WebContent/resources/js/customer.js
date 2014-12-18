@@ -1,14 +1,3 @@
-/*$(document).ready(function() {
-$('driverLicenseNumber').bind("enterKey",function(e){
-   console.log("enter!");
-});
-$('driverLicenseNumber').keyup(function(e){
-    if(e.keyCode == 13)
-    {
-        $(this).trigger("enterKey");
-    }
-});
-});*/
 
 function searchCustomer(){
 	$(document).ready(function() {

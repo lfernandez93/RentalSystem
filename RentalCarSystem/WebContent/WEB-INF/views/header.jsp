@@ -9,7 +9,7 @@
 <table border="0">
 <tr>
 <td align="right" style="width:30%"><img src="<c:url value="/resource/images/logo.jpg"></c:url>" alt="image"  style = "width:30%"/></td>
-<td align="left">404 The Page Cannot be Found</td>
+<td align="left">ERROR 404 - Name not found</td>
 <td>
 <div id="footer">
 <ul class="bottom">
@@ -19,6 +19,16 @@
 </div>
 </td>
 <td>
+	<security:authorize access="isAuthenticated()">
+		<ul>
+  <li><a href="/customer/list">Customers</a></li>
+  <li><a href="/">Vehicles</a></li>
+  <li><a href="/">Reservations</a></li>
+  <li><a href="/">Rents</a></li>
+	</ul>
+	</security:authorize>
+	<br>
+	<br>
 <div id="footer">
   <ul class="bottom">
   
