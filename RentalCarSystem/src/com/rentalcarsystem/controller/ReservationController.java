@@ -8,25 +8,29 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rentalcarsystem.domain.Reservation;
 import com.rentalcarsystem.service.ReservationService;
+import com.rentalcarsystem.service.VehicleService;
 @Controller()
 public class ReservationController {
 	@Autowired
 	ReservationService reservationService;
-	
+	@Autowired
+	VehicleService vehicleService;
 	//Add new Reservation
 	@RequestMapping(value = "/addreservation", method = RequestMethod.GET)
-	public String getAddNewReservationForm(Model model) {
-		Reservation newReservation = new Reservation();
-		model.addAttribute("newReservation", newReservation);
+	public String getAddNewReservationForm(@ModelAttribute("newReservation") Reservation reservationToBeAdded,@RequestParam(value="id") String idVehicle,Model model) {
+		model.addAttribute("vehicle", vehicleService.getVehicleById(idVehicle));
 		return "addReservation";
 	}
 	
 	@RequestMapping(value = "/addreservation", method = RequestMethod.POST)
-	public String addReservation(@ModelAttribute("newReservation") Reservation reservationToBeAdded){
-		reservationService.addReservation(reservationToBeAdded);
+	public String addReservation(@ModelAttribute("newReservation") Reservation reservationToBeAdded,@RequestParam(value="id") String idVehicle){
+		System.out.println("asdasd");
+		System.out.println(reservationToBeAdded.getCustomer().getDriverLicenseNumber());
+		//reservationService.addReservation(reservationToBeAdded);
 		return "redirect:/thankyou";
 	}
 	

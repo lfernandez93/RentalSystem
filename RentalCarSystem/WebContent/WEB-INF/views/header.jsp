@@ -21,8 +21,8 @@
 <td>
 	<security:authorize access="isAuthenticated()">
 		<ul>
-  <li><a href="/customer/list">Customers</a></li>
-  <li><a href="/">Vehicles</a></li>
+  <li><a href="/RentalCarSystem/customer/list">Customers</a></li>
+  <li><a href="/RentalCarSystem">Vehicles</a></li>
   <li><a href="/">Reservations</a></li>
   <li><a href="/">Rents</a></li>
 	</ul>

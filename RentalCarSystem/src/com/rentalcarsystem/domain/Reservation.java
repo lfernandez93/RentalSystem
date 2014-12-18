@@ -12,6 +12,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table
@@ -21,9 +25,14 @@ public class Reservation {
 	private int reservationId;
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)
 	@JoinTable(name = "customerId")
+	@Valid
 	private Customer customer;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
+	@NotEmpty()
 	private Date pickupDate;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date returnDate;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date reservationDate;
 	private String status;
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)

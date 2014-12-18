@@ -11,11 +11,12 @@
 <title>Customer</title>
 <link rel="stylesheet" type="text/css" href="<c:url value="/resource/css/main.css"/>" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="<spring:url value="/resource/js/customer.js"/>"></script>
 <%-- <script type="text/javascript" src="<spring:url value="/resource/js/reservation.js"/>"></script> --%>
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-	<form:form class="semantic"	modelAttribute="newReservation">
+	<form:form class="semantic"	modelAttribute="newReservation" action="addreservation/" method="post">
 		<fieldset>
 			<legend>
  			<spring:message code="addReservation.legend.label"/> 
@@ -24,8 +25,9 @@
 			<form:errors path="*"/>
 			</div>
 			<div>
+			<span hidden id="customerId" name="customerId"></span>
 			<label for="DriverLicenseNumber"><spring:message code="addReservation.form.DriverLicenseNumber.label"/></label>
-			<form:input id="driverLicenseNumber" path="customer.driverLicenseNumber" type="text"/>
+			<form:input onkeyup="searchCustomer()" id="driverLicenseNumber" path="customer.driverLicenseNumber" type="text"/>
 			<form:errors path="customer.driverLicenseNumber"/>
 			</div>			
 			<div>
