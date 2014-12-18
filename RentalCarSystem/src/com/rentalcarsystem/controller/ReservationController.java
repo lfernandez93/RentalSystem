@@ -14,7 +14,9 @@ import com.rentalcarsystem.domain.Reservation;
 import com.rentalcarsystem.domain.Vehicle;
 import com.rentalcarsystem.service.ReservationService;
 import com.rentalcarsystem.service.VehicleService;
+
 @Controller()
+@RequestMapping("/reservation")
 public class ReservationController {
 	@Autowired
 	ReservationService reservationService;
@@ -30,10 +32,15 @@ public class ReservationController {
 	
 	@RequestMapping(value = "/addreservation", method = RequestMethod.POST)
 	public String addReservation(@ModelAttribute("newReservation") Reservation reservationToBeAdded){
+		boolean added = false;
 		Vehicle vehicle = vehicleService.findById(reservationToBeAdded.getvehicleId());
 		reservationToBeAdded.setVehicle(vehicle);
-		//reservationService.addReservation(reservationToBeAdded);
-		return "redirect:/thankyou";
+		added = reservationService.addReservation(reservationToBeAdded);
+		if(added){
+			return "redirect:/thankyou";
+		} else {
+			return "error";
+		}
 	}
 	
 	//Edit existing reservation
