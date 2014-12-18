@@ -29,16 +29,16 @@ public class Reservation {
 	private Customer customer;
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	@NotEmpty()
-	private Date pickupDate;
+	private String pickupDate;
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
-	private Date returnDate;
+	private String returnDate;
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
-	private Date reservationDate;
+	private String reservationDate;
 	private String status;
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)
 	@JoinTable(name = "vehicleId")
 	private Vehicle vehicle;
-	
+	private int vehicleId;
 	
 	public Vehicle getVehicle() {
 		return vehicle;
@@ -58,23 +58,29 @@ public class Reservation {
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
 	}
-
-	public Date getPickupDate() {
+	public int getvehicleId() {
+		return vehicleId;
+	}
+	public void setvehicleId(int vehicleId) {
+		this.vehicleId = vehicleId;
+	}
+	
+	public String getPickupDate() {
 		return pickupDate;
 	}
-	public void setPickupDate(Date pickupDate) {
+	public void setPickupDate(String pickupDate) {
 		this.pickupDate = pickupDate;
 	}
-	public Date getReturnDate() {
+	public String getReturnDate() {
 		return returnDate;
 	}
-	public void setReturnDate(Date returnDate) {
+	public void setReturnDate(String returnDate) {
 		this.returnDate = returnDate;
 	}
-	public Date getReservationDate() {
+	public String getReservationDate() {
 		return reservationDate;
 	}
-	public void setReservationDate(Date reservationDate) {
+	public void setReservationDate(String reservationDate) {
 		this.reservationDate = reservationDate;
 	}
 	public String getStatus() {
