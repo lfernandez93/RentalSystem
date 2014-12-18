@@ -12,25 +12,23 @@
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
 	<h1>All Vehicles</h1>
 	<p>All the Vehicles to rent</p>
-	
-		<form:form class="semantic">
-	<center><input name="model"  type="text"/>&nbsp;
-	<input type="submit" value="Search"></center>
-	</form:form>
-		<div id="vehis"><table>
+	<div><table style="width:35%">
+	<tr><td>
+	<form action="vehicles/search" method="POST" class="semantic" >
+	<input name="brand" id="brand" type="text"/></td><td><input type="submit" value="Search">
+	</td></tr>
+	<tr><td>
+	</form>
+	<br><br>
+		</td></tr>
+		<tr><td>
 			<c:forEach items="${vehicles}" var="vehicle">
-			<tr><td>
-				<img src="<c:url value="/resource/images/${vehicle.plateNumber}.png"></c:url>" alt="image"  style = "width:10%"/>
+			<tr><td style="width:10%">
+				<img src="<c:url value="/resource/images/${vehicle.plateNumber}.png"></c:url>" alt="image"  style = "width:100%"/>
+				</td><td style="width:30%">
 				<h3>${vehicle.brand}</h3>
-				<p>${vehicle.type}</p>
-				<p>${vehicle.model}</p>
-				<p>${vehicle.year}</p>
-				<p>${vehicle.plateNumber}</p>
-				<p>${vehicle.dailyPrice}USD</p>
-				<p>${vehicle.fuelType}</p>
-				<p>${vehicle.seatQuantity}</p>
-				<p>${vehicle.condition}</p>
-				</td><td>
+				<p>${vehicle.type}, ${vehicle.model}, ${vehicle.year}, ${vehicle.seatQuantity}</p>
+				</td><td style="width:10%">
 				<div id="footer"><ul class="bottom">
 				<security:authorize access="isAuthenticated()">
 				<li><a href="<spring:url value="/vehicles/edit?id=${vehicle.vehicleId}" />">Edit</a></li>
@@ -41,8 +39,8 @@
 			    </security:authorize>
 			    </ul></div>
 			    </td></tr>
-			    <tr><td>
-			    --------------------------------------------------------------------------------------------------------------
+			    <tr><td colspan="3">
+			    ------------------------------------------------------------------------------------
 			    </td></tr>
 			</c:forEach>
 		</table></div>

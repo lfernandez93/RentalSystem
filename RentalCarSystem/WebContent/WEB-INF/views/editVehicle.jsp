@@ -12,7 +12,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp"/>
-	<h1>Add New Vehicle</h1>
+	<h1>Edit Vehicle</h1>
 <form:form class="semantic" modelAttribute="editVehicle" enctype="multipart/form-data">
 <form:errors path="*" cssClass="errorblock" element="div"/>
 	<fieldset>

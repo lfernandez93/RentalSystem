@@ -19,7 +19,7 @@
 	<label for="id">Id</label> <input id="id" name="j_username" type="text"/><br>
 	</div>
 	<div>
-	<label for="password">Password</label><input id="j_password" name="j_password" type="text"/>
+	<label for="password">Password</label><input id="j_password" name="j_password" type="password"/>
 	</div>
 	<br>
 	<br>

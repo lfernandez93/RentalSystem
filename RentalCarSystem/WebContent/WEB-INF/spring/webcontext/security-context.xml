@@ -23,7 +23,10 @@
 	<!-- Implemented with Web based URL - METHOD level authorization -->
 	<!-- the more specific rules need to come first, followed by the more general ones. -->
 	  <security:intercept-url pattern="/customer/list" access="hasRole('ROLE_ADMIN')" />  	
-	  <security:intercept-url pattern="/customer/add" access="hasRole('ROLE_ADMIN')" />  	
+	  <security:intercept-url pattern="/customer/add" access="hasRole('ROLE_ADMIN')" />  
+	  <security:intercept-url pattern="/vehicles/add" access="hasRole('ROLE_ADMIN')" />  
+	  <security:intercept-url pattern="/vehicles/edit" access="hasRole('ROLE_ADMIN')" />
+	  <security:intercept-url pattern="/vehicles/delete" access="hasRole('ROLE_ADMIN')" />    	
 <!-- 	  <security:intercept-url pattern="/customer/get" access="hasRole('ROLE_ADMIN')" />  	 -->
 <!-- 	  <security:intercept-url pattern="/members" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  /> -->
  	
