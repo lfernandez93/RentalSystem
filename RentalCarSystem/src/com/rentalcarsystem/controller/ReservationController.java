@@ -42,6 +42,11 @@ public class ReservationController {
 		}
 	}
 	
+	@RequestMapping("/thankyou")
+	public String showThankyou(){
+		return "thankyou";
+	}
+	
 	//Edit existing reservation
 	@RequestMapping(value = "/editreservation", method = RequestMethod.GET)
 	public String getEditReservationForm(@ModelAttribute("editingReservation") Reservation editingReservation, 
