@@ -8,10 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.rentalcarsystem.domain.Reservation;
 import com.rentalcarsystem.repository.ReservationRepository;
+import com.rentalcarsystem.service.ReservationService;
 
 @Service
 @Transactional
-public class ReservationServiceImpl {
+public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	ReservationRepository reservationRepository;
 	
@@ -40,6 +41,7 @@ public class ReservationServiceImpl {
 	public Reservation findById(Integer id) {
 		return reservationRepository.getReservationById(id);
 	}
+	
 	
 	public void update(Reservation reservation) {
 		reservationRepository.save(reservation);

@@ -18,7 +18,7 @@
 	<form:form class="semantic"	modelAttribute="newReservation">
 		<fieldset>
 			<legend>
- 			<spring:message code="addReservation.form.legend"/> 
+ 			<spring:message code="addReservation.legend.label"/> 
 			</legend>
 			<div>
 			<form:errors path="*"/>
