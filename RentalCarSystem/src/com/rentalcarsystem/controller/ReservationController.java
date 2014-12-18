@@ -20,7 +20,7 @@ public class ReservationController {
 	public String getAddNewReservationForm(Model model) {
 		Reservation newReservation = new Reservation();
 		model.addAttribute("newReservation", newReservation);
-		return "addreservationpage";
+		return "addreservation";
 	}
 	
 	@RequestMapping(value = "/addreservation", method = RequestMethod.POST)
@@ -51,13 +51,13 @@ public class ReservationController {
 		return "searchreservationpage";
 	}
 	
-	@RequestMapping(value = "/searchreservation", method = RequestMethod.POST)
-	public String searchReservation(@ModelAttribute("reservationId") int reservationId, 
-			Model model){
-		Reservation resultreservation = reservationService.findById(reservationId);
-		model.addAttribute("reservation", resultreservation);
-		return "viewreservation";
-	}
+//	@RequestMapping(value = "/searchreservation", method = RequestMethod.POST)
+//	public String searchReservation(@ModelAttribute("reservationId") int reservationId, 
+//			Model model){
+//		Reservation resultreservation = reservationService.findById(reservationId);
+//		model.addAttribute("reservation", resultreservation);
+//		return "viewreservation";
+//	}
 	
 	//Delete reservation
 	@RequestMapping(value = "/deletereservation", method = RequestMethod.GET)
@@ -83,7 +83,7 @@ public class ReservationController {
 	public String viewReservation(Model model){
 		List<Reservation> reservations = reservationService.getAll();
 		model.addAttribute("reservations", reservations);
-		return "viewallreservations";
+		return "reservations";
 	}
 	
 }

@@ -19,7 +19,6 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int reservationId;
-	private int vehicleId;
 	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.LAZY)
 	@JoinTable(name = "customerId")
 	private Customer customer;
@@ -49,12 +48,6 @@ public class Reservation {
 	}
 	public void setReservationId(int reservationId) {
 		this.reservationId = reservationId;
-	}
-	public int getVehicleId() {
-		return vehicleId;
-	}
-	public void setVehicleId(int vehicleId) {
-		this.vehicleId = vehicleId;
 	}
 
 	public Date getPickupDate() {
