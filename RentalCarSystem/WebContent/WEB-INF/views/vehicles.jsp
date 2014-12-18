@@ -37,7 +37,7 @@
 			    <li><a href="<spring:url value="/vehicles/delete?id=${vehicle.vehicleId}" />">Delete</a></li>
 			    </security:authorize>
 			    <security:authorize access="isAnonymous()">
-			    <li><a href="<spring:url value="/reservation/add?id=${vehicle.vehicleId}" />">Reserve</a></li>
+			    <li><a href="<spring:url value="/addreservation?id=${vehicle.vehicleId}" />">Reserve</a></li>
 			    </security:authorize>
 			    </ul></div>
 			    </td></tr>

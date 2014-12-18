@@ -16,7 +16,6 @@ import com.rentalcarsystem.service.ReservationService;
 import com.rentalcarsystem.service.VehicleService;
 
 @Controller()
-@RequestMapping("/reservation")
 public class ReservationController {
 	@Autowired
 	ReservationService reservationService;
@@ -37,7 +36,7 @@ public class ReservationController {
 		reservationToBeAdded.setVehicle(vehicle);
 		added = reservationService.addReservation(reservationToBeAdded);
 		if(added){
-			return "redirect:/thankyou";
+		return "redirect:/thankyou";
 		} else {
 			return "error";
 		}
