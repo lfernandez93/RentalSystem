@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.rentalcarsystem.domain.Reservation;
+import com.rentalcarsystem.domain.Vehicle;
 import com.rentalcarsystem.service.ReservationService;
 import com.rentalcarsystem.service.VehicleService;
+
 @Controller()
 public class ReservationController {
 	@Autowired
@@ -21,17 +23,23 @@ public class ReservationController {
 	VehicleService vehicleService;
 	//Add new Reservation
 	@RequestMapping(value = "/addreservation", method = RequestMethod.GET)
-	public String getAddNewReservationForm(@ModelAttribute("newReservation") Reservation reservationToBeAdded,@RequestParam(value="id") String idVehicle,Model model) {
-		model.addAttribute("vehicle", vehicleService.getVehicleById(idVehicle));
+	public String getAddNewReservationForm(@ModelAttribute("newReservation") Reservation reservationToBeAdded, @RequestParam("id") int vehicleId,Model model) {
+		
+		model.addAttribute("vehicleId", vehicleId);
 		return "addReservation";
 	}
 	
 	@RequestMapping(value = "/addreservation", method = RequestMethod.POST)
-	public String addReservation(@ModelAttribute("newReservation") Reservation reservationToBeAdded,@RequestParam(value="id") String idVehicle){
-		System.out.println("asdasd");
-		System.out.println(reservationToBeAdded.getCustomer().getDriverLicenseNumber());
-		//reservationService.addReservation(reservationToBeAdded);
+	public String addReservation(@ModelAttribute("newReservation") Reservation reservationToBeAdded){
+		boolean added = false;
+		Vehicle vehicle = vehicleService.findById(reservationToBeAdded.getvehicleId());
+		reservationToBeAdded.setVehicle(vehicle);
+		added = reservationService.addReservation(reservationToBeAdded);
+		if(added){
 		return "redirect:/thankyou";
+		} else {
+			return "error";
+		}
 	}
 	
 	//Edit existing reservation

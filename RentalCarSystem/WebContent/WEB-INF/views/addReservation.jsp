@@ -16,7 +16,7 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/header.jsp"/>
-	<form:form class="semantic"	modelAttribute="newReservation" action="addreservation/" method="post">
+	<form:form class="semantic"	modelAttribute="newReservation" action="addreservation" method="post">
 		<fieldset>
 			<legend>
  			<spring:message code="addReservation.legend.label"/> 
@@ -24,8 +24,13 @@
 			<div>
 			<form:errors path="*"/>
 			</div>
+
 			<div>
-			<span hidden id="customerId" name="customerId"></span>
+			<form:hidden id="customerId" path="customer.customerId" />
+			<form:errors path="customer.customerId"/>
+			</div>
+			
+			<div>
 			<label for="DriverLicenseNumber"><spring:message code="addReservation.form.DriverLicenseNumber.label"/></label>
 			<form:input onkeyup="searchCustomer()" id="driverLicenseNumber" path="customer.driverLicenseNumber" type="text"/>
 			<form:errors path="customer.driverLicenseNumber"/>
@@ -58,25 +63,24 @@
 			<br>
 			
 			<div>
-			<form:hidden id="vehicle" path="vehicle" value="${vehicle}" />
-			<form:errors path="vehicle"/>
+			<form:hidden id="vehicleId" path="vehicleId" value="${vehicleId}" />
 			</div>
 			
 			<div>
 			<label for="pickupDate"><spring:message code="addReservation.form.pickupDate.label"/></label>
-			<form:input id="pickupDate" path="pickupDate" type="date"/>
+			<form:input id="pickupDate" path="pickupDate" type="text"/>
 			<form:errors path="pickupDate"/>
 			</div>
 			
 			<div>
 			<label for="returnDate"><spring:message code="addReservation.form.returnDate.label"/></label>
-			<form:input id="returnDate" path="returnDate" type="date"/>
+			<form:input id="returnDate" path="returnDate" type="text"/>
 			<form:errors path="returnDate"/>
 			</div>
 			
 			<div>
 			<label for="reservationDate"><spring:message code="addReservation.form.reservationDate.label"/></label>
-			<form:input id="reservationDate" path="reservationDate" type="date"/>
+			<form:input id="reservationDate" path="reservationDate" type="text"/>
 			<form:errors path="reservationDate"/>
 			</div>
 			
